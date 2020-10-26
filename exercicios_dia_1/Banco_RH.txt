@@ -1,0 +1,38 @@
+--criando base de dados
+
+create database db_rh;
+
+--ativando base de dados
+
+use db_rh;
+
+--criando tabela abstrações funcionários
+
+create table tb_funcionarios (
+ id bigint(5) auto_increment,
+ nome varchar (50) not null,
+ cargo varchar (50) not null,
+ salario decimal(10,2) not null,
+ ativo boolean,
+ primary key (id)
+)
+
+--inserindo dados de 5 funcionários
+
+insert into tb_funcionarios (nome, cargo, salario, ativo) values ("Bárbara", "Desenvolvedora Jr.", 4658.00, true);
+insert into tb_funcionarios (nome, cargo, salario, ativo) values ("Gilda", "Analista de Teste Sênior", 8000.00, true);
+insert into tb_funcionarios (nome, cargo, salario, ativo) values ("Carlos", "Estagiário", 1500.00, true);
+insert into tb_funcionarios (nome, cargo, salario, ativo) values ("Beatrice", "Analista de Dados", 3500.00, true);
+insert into tb_funcionarios (nome, cargo, salario, ativo) values ("Eliza", "Jovem Aprendiz", 650.00, true);
+
+--funcionários salário maior que 2000.00
+
+select * from tb_funcionarios where salario > 2000.00
+
+--funcionários salário menor que 2000.00
+
+select * from tb_funcionarios where salario < 2000.00
+
+--update
+
+update tb_funcionarios set nome = "Beatriz" where id = 4
