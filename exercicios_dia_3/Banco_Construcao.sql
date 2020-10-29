@@ -1,0 +1,47 @@
+create database db_construindo_a_nossa_vida;
+use db_construindo_a_nossa_vida;
+
+create table tb_categoria (
+id bigint (5) auto_increment,
+n_categoria varchar (100) not null,
+ativo boolean,
+primary key (id)
+);
+
+insert into tb_categoria (n_categoria, ativo) values ("Acabamento", true);
+insert into tb_categoria (n_categoria, ativo) values ("Estrutura Aço", true);
+insert into tb_categoria (n_categoria, ativo) values ("Estrutura Madeira", true);
+insert into tb_categoria (n_categoria, ativo) values ("Pias e lavabos", true);
+insert into tb_categoria (n_categoria, ativo) values ("Portas e Janelas", true);
+
+create table tb_produto (
+id bigint (5) auto_increment,
+n_produto varchar (100),
+preco decimal (6,2),
+ativo boolean,
+categoria_id bigint (5),
+primary key (id),
+foreign key (categoria_id) references tb_categoria (id)
+);
+
+insert into tb_produto (n_produto, preco, ativo, categoria_id) values ("Coluna de Aço 7x14x600 cm", 122.79, true, 2);
+insert into tb_produto (n_produto, preco, ativo, categoria_id) values ("Viga Bruta Eucalipto 5x11x300 cm", 25.90, true, 3);
+insert into tb_produto (n_produto, preco, ativo, categoria_id) values ("Janela de Madeira 100x150x12 cm", 417.90, true, 5);
+insert into tb_produto (n_produto, preco, ativo, categoria_id) values ("Conjunto para Banheiro", 294.33, true, 4);
+insert into tb_produto (n_produto, preco, ativo, categoria_id) values ("Cimento Queimado 5 Kg", 69.99, true, 1);
+insert into tb_produto (n_produto, preco, ativo, categoria_id) values ("Tinta Acrílica 5l", 75.00, true, 1);
+insert into tb_produto (n_produto, preco, ativo, categoria_id) values ("Porta Aço 215x83x12 cm", 387.00, true, 5);
+insert into tb_produto (n_produto, preco, ativo, categoria_id) values ("Pia de Granito", 289.90, true, 4);
+
+select * from tb_produto where preco > 50.00;
+
+select * from tb_produto where preco > 3.00 and preco < 60.00;
+
+select * from tb_produto where n_produto like "%cl%";
+
+select * from tb_produto inner join tb_categoria on tb_produto.categoria_id = tb_categoria.id;
+
+select * from tb_produto inner join tb_categoria on tb_produto.categoria_id = tb_categoria.id where tb_categoria.id = 1;
+
+
+
